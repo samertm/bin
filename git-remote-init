@@ -1,0 +1,6 @@
+#!/bin/bash
+
+if [ -n "$1" ] ; then
+    IFS=':' read -ra array_arg <<< "$1" # split on ':'
+    ssh ${array_arg[0]} -p 6552 "mkdir -p ${array_arg[1]} ; cd ${array_arg[1]} ; git --bare init"
+fi
